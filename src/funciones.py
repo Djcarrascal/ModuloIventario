@@ -27,7 +27,7 @@ def agregar_producto():
             print("\nSolo de pueden ingresar numeros")                
     while True:
         try:
-            precio = int(input("\nIngrese el precio del producto: "))
+            precio = float(input("\nIngrese el precio del producto: "))
             if not precio:
                     print("\nNo puede dejar el precio vacío, por favor ingrese el precio")
                     continue
@@ -58,3 +58,34 @@ def calcular_estadisticas():
 #Creé una funcion de mensaje para que solamente llamarla depues de finalizar cada opcion elegida del menu principal
 def mensaje_agradecimiento():
         print("\nGracias por usar el módulo de inventario")
+
+def guardar_inventario():
+        nombre_archivo = "Inventary.csv"
+        with open(nombre_archivo, "w") as archivo:
+            for producto in producto_nuevo:
+                archivo.write(f"{producto['nombre']}, {producto['cantidad']}, {producto['precio']}, {producto['costo_total']}\n")
+                print("\nProducto guardado en inventario.txt")
+
+def buscar_producto(nombre):
+        for producto in producto_nuevo:
+            if producto["nombre"] == nombre:
+                return producto
+        return None
+
+def actualizar_producto(nombre, cantidad, precio):
+        for producto in producto_nuevo:
+            if producto["nombre"] == nombre:
+                producto["cantidad"] = cantidad
+                producto["precio"] = precio
+                producto["costo_total"] = cantidad * precio
+                print(f"\nProducto actualizado: {nombre}, cantidad: {cantidad}, precio unitario: {precio} y el costo total actualizado es de: {cantidad * precio}")
+                return
+        print("\nProducto no encontrado para actualizar.")
+
+def eliminar_producto(nombre):
+        for producto in producto_nuevo:
+            if producto["nombre"] == nombre:
+                producto_nuevo.remove(producto)
+                print(f"\nProducto eliminado: {nombre}")
+                return
+        print("\nProducto no encontrado para eliminar.")

@@ -6,8 +6,12 @@ while opcion != 0:
     print("\nInventario de Productos\n")
     print("Menu de opciones:\n")
     print("1. Agregar Productos")
-    print("2. Ver Productos")
+    print("2. Ver Inventario")
     print("3. Calcular estadísticas")
+    print("4. Guardar inventario")
+    print("5. Buscar producto")
+    print("6. Actualizar producto")
+    print("7. Eliminar producto")
     print("0. Salir")
     while True:
         try:
@@ -29,7 +33,32 @@ while opcion != 0:
     elif opcion == 3:
             calcular_estadisticas()
             mensaje_agradecimiento()
-    
+      
+    elif opcion == 4:
+            guardar_inventario()
+            print("\nInventario guardado exitosamente.\n")
+            mensaje_agradecimiento()
+
+    elif opcion == 5:
+            nombre = input("\nIngrese el nombre del producto a buscar: ")
+            producto = buscar_producto(nombre)
+            if producto:
+                print(f"\nProducto encontrado: {producto['nombre']}, cantidad: {producto['cantidad']}, precio unitario: {producto['precio']}, costo total: {producto['costo_total']}")
+            else:
+                print("\nProducto no encontrado.")
+
+    elif opcion == 6:
+            nombre = input("\nIngrese el nombre del producto a actualizar: ")
+            cantidad = int(input("Ingrese la nueva cantidad: "))
+            precio = float(input("Ingrese el nuevo precio: "))
+            actualizar_producto(nombre, cantidad, precio)
+
+
+    elif opcion == 7:
+            nombre = input("\nIngrese el nombre del producto a eliminar: ")
+            eliminar_producto(nombre)
+
+
     else:
           mensaje_agradecimiento()
             
