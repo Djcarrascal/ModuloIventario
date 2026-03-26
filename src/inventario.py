@@ -53,11 +53,9 @@ while opcion != 0:
             precio = float(input("Ingrese el nuevo precio: "))
             actualizar_producto(nombre, cantidad, precio)
 
-
     elif opcion == 7:
             nombre = input("\nIngrese el nombre del producto a eliminar: ")
             eliminar_producto(nombre)
-
 
     else:
           mensaje_agradecimiento()
