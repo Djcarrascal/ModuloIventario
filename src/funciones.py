@@ -57,10 +57,12 @@ En esta funcion tomé datos de la funcion (agregar_producto) para hacer el
 cálculo de los totales de cantidad y precio solicitados sumando item por item.
 """
 def calcular_estadisticas():
-        total_cantidad = sum(item["cantidad"]for item in producto_nuevo)
-        total_costo = sum(item["costo_total"]for item in producto_nuevo)
+        unidades_totales = sum(item["cantidad"]for item in producto_nuevo)
+        valor_total = sum(item["costo_total"]for item in producto_nuevo)
+        producto_mas_caro = max(producto_nuevo, key=lambda x: x["precio"])
+        producto_mayor_stock = max(producto_nuevo, key=lambda x: x["cantidad"])
 #Una vez finalizado el calulo se imprime el siguiente mensaje con los datos de la operación realizada.
-        print(f"\nSu inventario tiene {total_cantidad} productos, con un valor total de ${total_costo} USD")
+        print(f"\nSu inventario tiene {unidades_totales} productos, con un valor total de ${valor_total}, \nel producto mas caro es {producto_mas_caro["nombre"]} y el que tiene mas Stock es {producto_mayor_stock["nombre"]}")
 
 #Creé una funcion de mensaje para que solamente llamarla depues de finalizar cada opcion elegida del menu principal
 def mensaje_agradecimiento():
@@ -115,7 +117,7 @@ def eliminar_producto(nombre):
         print("\nProducto no encontrado para eliminar.")
     
 def cargar_archivo_csv():
-        nombre_archivo = "Inventary.csv"
+        nombre_archivo = "Inventory.csv"
         try:
             with open(nombre_archivo, "r") as archivo:
                 for linea in archivo:

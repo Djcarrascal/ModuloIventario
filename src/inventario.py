@@ -59,9 +59,14 @@ while opcion != 0:
             eliminar_producto(nombre)
             
     elif opcion == 8:
-            cargar_archivo_csv()
+            opcion = input("\nSi desea Sobrecribir los datos escriba (S), si desea Fucionarlos escriba (F): ")
+            if opcion == "S":
+                producto_nuevo.clear()
+                producto_nuevo = []
+                cargar_archivo_csv()
+            elif opcion == "F":
+                producto_nuevo = []
+                cargar_archivo_csv()
+    
     else:
           mensaje_agradecimiento()
-            
-          
-          
