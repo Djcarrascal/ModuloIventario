@@ -115,3 +115,18 @@ def eliminar_producto(nombre):
         print("\nProducto no encontrado para eliminar.")
     
 def cargar_archivo_csv():
+        nombre_archivo = "Inventary.csv"
+        try:
+            with open(nombre_archivo, "r") as archivo:
+                for linea in archivo:
+                    nombre, cantidad, precio, costo_total = linea.strip().split(", ")
+                    producto = {
+                        "nombre": nombre,
+                        "cantidad": int(cantidad),
+                        "precio": float(precio),
+                        "costo_total": float(costo_total)
+                    }
+                    producto_nuevo.append(producto)
+            print("\nArchivo cargado exitosamente.")
+        except FileNotFoundError:
+            print("\nArchivo no encontrado. Asegúrese de que el archivo 'Inventary.csv' exista en el directorio.")

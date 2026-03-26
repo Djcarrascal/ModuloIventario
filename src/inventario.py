@@ -12,6 +12,7 @@ while opcion != 0:
     print("5. Buscar producto")
     print("6. Actualizar producto")
     print("7. Eliminar producto")
+    print("8. Cargar archivo CSV")
     print("0. Salir")
     while True:
         try:
@@ -56,7 +57,9 @@ while opcion != 0:
     elif opcion == 7:
             nombre = input("\nIngrese el nombre del producto a eliminar: ")
             eliminar_producto(nombre)
-
+            
+    elif opcion == 8:
+            cargar_archivo_csv()
     else:
           mensaje_agradecimiento()
             
